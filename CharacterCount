@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class CharacterCounter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String input = scanner.nextLine();
+
+        int vowelCount = 0, consonantCount = 0, specialCharCount = 0, digitCount = 0, upperCaseCount = 0;
+        String vowels = "aeiouAEIOU";
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+
+            if (ch >= '0' && ch <= '9') {
+                digitCount++;
+            } else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                if (vowels.indexOf(ch) != -1) {
+                    vowelCount++;
+                } else {
+                    consonantCount++;
+                }
+
+                if (ch >= 'A' && ch <= 'Z') {
+                    upperCaseCount++;
+                }
+            } else if (!(ch == ' ' || ch == '\t' || ch == '\n')) {
+                specialCharCount++;
+            }
+        }
+
+        System.out.println("Vowels: " + vowelCount);
+        System.out.println("Consonants: " + consonantCount);
+        System.out.println("Special Characters: " + specialCharCount);
+        System.out.println("Digits: " + digitCount);
+        System.out.println("Uppercase Letters: " + upperCaseCount);
+
+        scanner.close();
+    }
+}
